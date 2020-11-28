@@ -1,4 +1,5 @@
-#Queues
+#Queues 
+
 A queue is a data structure where the first item to enter the Queue is also
 the first to leave. We call this a FIFO structure, meaning First-In First-Out
 or FIFO. Think of this as a lunch line at school, kids join the line at
