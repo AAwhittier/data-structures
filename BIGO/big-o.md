@@ -1,5 +1,7 @@
 # Big O Notation
+
 ##What is big O Notation?
+
 Big O is a way of representing how an algorithm behaves mathematically. 
 It is a way of showing the performance of our code in order to know 
 how efficient it is. For this we use the notation O(n) where n is the
