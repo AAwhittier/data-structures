@@ -6,4 +6,4 @@ how efficient it is. For this we use the notation O(n) where n is the
 estimated performance of an algorithm. Since we want to know the performance
 of our algorithm independent of any hardware factors we use time steps 
 to calculate big O. Consider the following array:
-![Array](array.PNG)
+![Array](array.JPG)
