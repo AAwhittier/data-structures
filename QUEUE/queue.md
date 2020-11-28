@@ -195,4 +195,4 @@ removing values from the Queue as every value has been checked for a space
 at this point in time. Once you complete problem number 2 return to the homeapge to
 learn about our next topic, linked lists.
 
-[Return to homepage](README.md)
+[Return to homepage](../README.md)
