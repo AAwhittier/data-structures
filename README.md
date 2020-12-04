@@ -8,6 +8,7 @@ our final topic, Trees.
 ## **Start here:**
 1. [Big O Notation](BIGO/big-o.md)
 2. [Queues](QUEUE/queue.md)
+3. [Linked Lists](LINKEDLIST/llist.md)
 
 \
 \
