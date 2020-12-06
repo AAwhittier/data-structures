@@ -6,13 +6,14 @@ next to another part of the list. To understand this better we will start
 by looking at the structure of a linked list to see how it is organized.
 ## Anatomy of a Linked List
 Every linked list knows where it starts and where ends. This is important
-since if we do not have this information the list can not be accessed.
+since if we do not have this information the list can not be accessed. Given
+a high level view of their structure they can appear quite catlike.
 Consider the following diagram:
 
 ![List Structure](catanatomy.jpg)
 [1](#Sources)
 
-We call the beginning of the list the 'head' and the end of the list the
+We call the beginning of the linked list the 'head' and the end of the list the
 'tail'. In between each of these resides the bulk of the linked list, organized into
 what we call nodes. Each of these nodes located between the head and the 
 tail store both the value and the address of the next node. Note that both
@@ -86,14 +87,70 @@ As a general rule we should always know where the head and tail are in a DLL
 Losing access to this would lose access to the list. This can be tricky so we will
 cover a few of the operations.
 Performing the operations:
-* Insert Head - Once you have a node to be inserted, the next of your newnode
-should be addressed to the head. ```newnode.next = DLL.head``` and the previous of the head
-should be assigned to the node. ```DLL.head.prev = newnode``` 
+* Insert Head
+1. Create a new node.```newnode = Node()```
+1. Check if the list is empty. ```self.head is None```
+    1. If it is, both the head and tail point to the new node. Success. ```head, tail = newnode```
+1. If not point the new node next to the previous head. ```newnode.next = head```
+1. Point the previous head to the new node. ```head.prev = newnode```
+1. Point head to new node. ```head = newnode```
+    
 * Insert in Middle - Once you have a node to be inserted, these steps will
 ensure you maintain the integrity of the list. The red arrows mark a reference that
 has been reassigned.
 
 # Exercises
+1. Using the partial linked list class provided, add functionality to it 
+to allow you to find an item in the list. Using that code verify if a cat
+is found in the phrase "Everybody wants to be a cat. Because a cat's the only cat. Who knows where it's at." [5](#Sources)
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.previous = None
+
+    def __str__(self):
+        return self.data
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def __str__(self):
+        output = []
+        current = self.head
+        while current is not None:
+            output.append(current.data)
+            current = current.next
+        return " ".join(output)
+
+    def append(self, data):
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.previous = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+
+    def find(self, value):
+        # Place your code here.
+        pass
+
+
+ll = LinkedList()
+lostcat = "Everybody wants to be a cat. Because a cat's the only cat. Who knows where it's at."
+for word in lostcat.split(" "):
+    ll.append(word)
+
+# Find the cat here.
+print(ll)
+```
 1. Create a program to convert the following premade deque into a python list,
 storing all the values from the deque into the array. The items must remain in the same
  order. A solution to this problem can be found at the bottom of the page.
@@ -106,6 +163,7 @@ def fill_deque(my_deque):
 
 def deque_to_array(my_deque, cat_list):
     # Your code here. Try to find the best solution.
+    pass
 
 def main():
     my_deque = deque()
@@ -122,7 +180,11 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+2. Add code to the linked list class to implement an insert function.
 
+```python
+
+```
 #Solutions
 1. There are a few ways to solve this problem. 
 ```python
@@ -158,3 +220,4 @@ if __name__ == '__main__':
 1. <a name = "image3"></a>https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F838091811897583826%2F&psig=AOvVaw3SpZF-kfkwELuiYGLWW_24&ust=1607204720956000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOD0va2mte0CFQAAAAAdAAAAABAL
 1. <a name = "image1"></a>https://www.reddit.com/r/ProgrammerHumor/comments/fbbdl3/linked_cat/
 2. <a name = "image2"></a>https://www.catster.com/wp-content/uploads/2019/05/Two-orange-ginger-tabbies-wrestling-fighting-and-biting.jpg
+1. Sherman, Richard M., 1928-. Walt Disney's Aristocats: Vocal, United States: Milwaukee, WI :Wonderland Music Co. and Walt Disney Music Co

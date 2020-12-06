@@ -6,6 +6,7 @@ def fill_deque(my_deque):
 
 def deque_to_array(my_deque, cat_list):
     # Your code here. Try to find the best solution.
+    pass
 
 def main():
     my_deque = deque()
