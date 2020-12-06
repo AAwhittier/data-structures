@@ -32,15 +32,19 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
 
-    def find(self, value):
-        # Place your code here.
-        pass
-
+    def replace(self, target, value):
+        current = self.head
+        while current is not None:
+            if current.data == target:
+                current.data = value
+            current = current.next
 
 ll = LinkedList()
-lostcat = "Everybody wants to be a cat. Because a cat's the only cat. Who knows where it's at."
-for word in lostcat.split(" "):
+missing_cats = "Everybody wants to be a dog - Because a dog is the only dog - Who knows where it's at."
+for word in missing_cats.split(" "):
     ll.append(word)
 
-# Find the cat here.
+ll.replace("dog", "cat")
 print(ll)
+# Correct Outputs:
+# Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.

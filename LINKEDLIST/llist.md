@@ -101,8 +101,9 @@ has been reassigned.
 
 # Exercises
 1. Using the partial linked list class provided, add functionality to it 
-to allow you to find an item in the list. Using that code verify if a cat
-is found in the phrase "Everybody wants to be a cat. Because a cat's the only cat. Who knows where it's at." [5](#Sources)
+to allow you to replace an item in the list. Using that code correct
+the phrase "Everybody wants to be a dog - Because a dog is the only dog - Who knows where it's at." to
+ "Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at." [5](#Sources)
 ```python
 class Node:
     def __init__(self, data):
@@ -138,22 +139,22 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
 
-    def find(self, value):
-        # Place your code here.
+    def replace(self, target, value):
+        # Your code here.
         pass
 
-
 ll = LinkedList()
-lostcat = "Everybody wants to be a cat. Because a cat's the only cat. Who knows where it's at."
-for word in lostcat.split(" "):
+missing_cats = "Everybody wants to be a dog - Because a dog is the only dog - Who knows where it's at."
+for word in missing_cats.split(" "):
     ll.append(word)
 
-# Find the cat here.
+ll.replace("dog", "cat")
 print(ll)
+# Correct Outputs:
+# Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.
 ```
-1. Create a program to convert the following premade deque into a python list,
-storing all the values from the deque into the array. The items must remain in the same
- order. A solution to this problem can be found at the bottom of the page.
+1. Using the linked list class from the prior example, remove cat0 through 9
+from the deque and place them into a LinkedList object. Display the new linked list.
 ```python
 from collections import deque
 
@@ -161,58 +162,67 @@ def fill_deque(my_deque):
     for i in range(10):
         my_deque.append("cat" + str(i))
 
-def deque_to_array(my_deque, cat_list):
-    # Your code here. Try to find the best solution.
+def deque_to_ll(my_deque, cat_list, linked_list):
+    # Your code here.
     pass
 
-def main():
-    my_deque = deque()
-    cat_list = []
-
-    fill_deque(my_deque)
-    print(my_deque)
-
-    deque_to_array(my_deque, cat_list)
-    print(cat_list)
-
-    pass
-
-if __name__ == '__main__':
-    main()
+my_deque = deque()
+cat_list = fill_deque(my_deque)
 ```
-2. Add code to the linked list class to implement an insert function.
 
-```python
-
-```
 #Solutions
-1. There are a few ways to solve this problem. 
+1. There are a few ways to solve this problem. One has been provided.
 ```python
-from collections import deque
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.previous = None
 
-def fill_deque(my_deque):
-    for i in range(10):
-        my_deque.append("cat" + str(i))
+    def __str__(self):
+        return self.data
 
-def deque_to_array(my_deque, cat_list):
-    while(len(my_deque) != 0):
-        cat_list.append(my_deque.popleft())
 
-def main():
-    my_deque = deque()
-    cat_list = []
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
-    fill_deque(my_deque)
-    print(my_deque)
+    def __str__(self):
+        output = []
+        current = self.head
+        while current is not None:
+            output.append(current.data)
+            current = current.next
+        return " ".join(output)
 
-    deque_to_array(my_deque, cat_list)
-    print(cat_list)
+    def append(self, data):
+        new_node = Node(data)
 
-    pass
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.previous = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
 
-if __name__ == '__main__':
-    main()
+    def replace(self, target, value):
+        current = self.head
+        while current is not None:
+            if current.data == target:
+                current.data = value
+            current = current.next
 
+ll = LinkedList()
+missing_cats = "Everybody wants to be a dog - Because a dog is the only dog - Who knows where it's at."
+for word in missing_cats.split(" "):
+    ll.append(word)
+
+ll.replace("dog", "cat")
+print(ll)
+# Correct Outputs:
+# Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.
 ```
 
 #### Sources:
