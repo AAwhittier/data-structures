@@ -83,7 +83,7 @@ to access the next nodes.
 ![Linked List Cat](listcat.png)
 [4](#Sources)
 
-As a general rule we should always know where the head and tail are in a DLL
+As a general rule we should always know where the head and tail are in a DLL.
 Losing access to this would lose access to the list. This can be tricky so we will
 cover a few of the operations.
 Performing the operations:
@@ -92,15 +92,29 @@ Performing the operations:
 1. Check if the list is empty. ```self.head is None```
     1. If it is, both the head and tail point to the new node. Success. ```head, tail = newnode```
 1. If not point the new node next to the previous head. ```newnode.next = head```
-1. Point the previous head to the new node. ```head.prev = newnode```
-1. Point head to new node. ```head = newnode```
-    
-* Insert in Middle - Once you have a node to be inserted, these steps will
-ensure you maintain the integrity of the list. The red arrows mark a reference that
-has been reassigned.
+1. Point the previous head to the new node. ```head.previous = newnode```
+1. Point head to new node. ```head = newnode``` Success.
+
+* Insert Tail 
+1. Create a new node. ```newnode = Node()```
+1. Check if the list is empty, if so insert at the head instead. ```insert_head()```
+1. Assign previous of new node to the current tail. ```newnode.previous = tail```
+1. Assign the old tail next to the new node. ```tail.next = newnode``` Success.
+
+* Insert Middle
+1. Create a new node. ```newnode = Node()```
+1. Check if the list is empty, if so insert at the head instead. ```insert_head()```
+1. Assign the new node previous to current. ```newnode.previous = current```
+1. Assign new node next to to the node after current. ```newnode.next = current.next```
+1. Assign the previous address of the next node to the new node. ```current.next.previous = newnode```
+1. Assign the current node next to the new node. ```current.next = newnode``` Success.
+* Remove Head WIP
+* Remove Tail WIP
+* Remove Middle WIP
 
 # Exercises
-1. Using the partial linked list class provided, add functionality to it 
+* EX 1:
+Using the partial linked list class provided, add functionality to it 
 to allow you to replace an item in the list. Using that code correct
 the phrase "Everybody wants to be a dog - Because a dog is the only dog - Who knows where it's at." to
  "Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at." [5](#Sources)
@@ -153,7 +167,8 @@ print(ll)
 # Correct Outputs:
 # Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.
 ```
-1. Using the linked list class from the prior example, remove cat0 through 9
+* EX 2:
+Using the linked list class from the prior example, remove cat0 through 9
 from the deque and place them into a LinkedList object. Display the new linked list.
 ```python
 from collections import deque
