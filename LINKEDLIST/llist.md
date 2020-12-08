@@ -108,9 +108,29 @@ Performing the operations:
 1. Assign new node next to to the node after current. ```newnode.next = current.next```
 1. Assign the previous address of the next node to the new node. ```current.next.previous = newnode```
 1. Assign the current node next to the new node. ```current.next = newnode``` Success.
-* Remove Head WIP
-* Remove Tail WIP
-* Remove Middle WIP
+
+* Remove Head 
+1. Check if linked list is empty. ```self.head is None```
+    1. If so, do nothing.
+2. Create a current variable and set it to the second node. ```current = head.next```
+1. Set the previous of current to None. ```current.previous = None```
+1. Now assign a new head. ```head = head.next```
+
+* Remove Tail
+1. Check if linked list is empty. ```self.head is None```
+    1. If so, do nothing.
+1. Create a current variable and set it to the node next to the tail
+```current = tail.prev```
+1. Remove the next of the current node. ```current.next = None```
+1. Now assign the new tail. ```tail = current```
+
+* Remove Middle 
+1. Check if linked list is empty. ```self.head is None```
+    1. If so, do nothing.
+1. Move current to the node you are removing.
+1. Assign the node after current to the one before it.
+    1. Assign previous of the next node to the previous node. ```current.next.previous = current.previous```
+    1. Assign the prior node's next to the node after current. ```current.previous.next = current.next```
 
 # Exercises
 * EX 1:
