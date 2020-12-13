@@ -78,10 +78,16 @@ print(tail_sum_up_to(n))
 When you have a calculation that begins to generate an oversized call stack,
 you can sometimes store the values you already know via memoization. If your
 recursive algorithm runs poorly in e.g. O(2^n) time there may be a chance to memoize 
-it. 
+it. You can do this by:
+1. Create a storage variable, a dictionary, or other type to cache the data.
+1. When the function is called:
+    1. Return the item if it is in storage.
+    1. Otherwise compute the the item.
+    1. Store the new computed item into the cache.
 
-
-
+You can often tell whether or not memoization can be applied by checking if
+the function will always return the same result for the same inputs. If it does
+it is worth looking to see if memoization can be of use.
 
 [Return to homepage](../README.md)
 
