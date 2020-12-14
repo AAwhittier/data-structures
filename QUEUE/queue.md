@@ -194,5 +194,5 @@ with the size of the Queue. This allows us to know when we should stop
 removing values from the Queue as every value has been checked for a space
 at this point in time. Once you complete problem number 2 return to the homepage to
 learn about our next topic, linked lists.
-[Continue to Linked Lists](../llist.md)
+
 [Return to homepage](../README.md)
