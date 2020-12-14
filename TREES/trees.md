@@ -190,7 +190,7 @@ christmas_tree.insert(3)
 christmas_tree.insert(7)
 ```
 
-* (2) Your cat is now stuck somewhere in the tree. You need to find out where in the
+* (2) Your cat is now stuck somewhere in the tree. You need to find out where in the 
 tree the cat is located in order to get it out. Add code to the tree class
 to implement a find method to return the cat and its location. The cat in this example
 will be represented by the number 6 in the tree.
