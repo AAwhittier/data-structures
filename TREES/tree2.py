@@ -53,15 +53,28 @@ class Tree:
         else:
             return self._height_of_right(node.right) + 1
 
+    def size_of(self):
+        if self.root is None:
+            return 0
+        else:
+            return self._size_of(self.root)
+
+    def _size_of(self, node):
+        if node is None:
+            return 0
+        else:
+            return self._size_of(node.left) + self._size_of(node.right) + 1
+
+
 christmas_tree = Tree()
 christmas_tree.insert(5)
 christmas_tree.insert(4)
 christmas_tree.insert(6)
 christmas_tree.insert(3)
 christmas_tree.insert(7)
+christmas_tree.insert(8)
+christmas_tree.insert(9)
+christmas_tree.insert(10)
 
-height = christmas_tree.height_of_branches()
-if height[0] == height[1]:
-    print("Your cat can safely climb the tree.")
-else:
-    print("You cat would cause the tree to fall over.")
+branches = christmas_tree.size_of()
+print(f"Your tree has {branches} branches available for hanging ornaments.")
