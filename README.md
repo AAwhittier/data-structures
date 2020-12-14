@@ -12,4 +12,7 @@ our final topic, Trees.
 4. [Recursion](RECURSION/recursion.md)
 5. [Trees](TREES/trees.md)
 
-
+## Contact:
+Aaron Whittier
+CSE 212-02
+whi12044@byui.edu

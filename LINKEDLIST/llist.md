@@ -187,26 +187,27 @@ print(ll)
 # Correct Outputs:
 # Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.
 ```
-* EX 2:
-Using the linked list class from the prior example, remove cat0 through 9
-from the deque and place them into a LinkedList object. Display the new linked list.
+* EX 2: Using a deque
+Provided the code to fill a list with cats 0-9, implement code to use a deque
+and store the values from the list into the deque, then reverse it. Display the
+results.
 ```python
 from collections import deque
 
-def fill_deque(my_deque):
+def fill_list():
+    cat_list = []
     for i in range(10):
-        my_deque.append("cat" + str(i))
+        cat_list.append("cat" + str(i))
+    return cat_list
 
-def deque_to_ll(my_deque, cat_list, linked_list):
-    # Your code here.
-    pass
+def convert_list_to_deque(my_list):
+    #Your code here
 
-my_deque = deque()
-cat_list = fill_deque(my_deque)
+cat_list = fill_list()
 ```
 
 #Solutions
-1. There are a few ways to solve this problem. One has been provided.
+* (1) There are a few ways to solve this problem. One has been provided.
 ```python
 class Node:
     def __init__(self, data):
@@ -259,7 +260,37 @@ print(ll)
 # Correct Outputs:
 # Everybody wants to be a cat - Because a cat is the only cat - Who knows where it's at.
 ```
+Here we need to start by giving ourselves a location in the list, ```current = self.head```.
+We can use current to access the data for comparison until we find what we are looking for.
+If we do not find it, we can get to the next node via ```current = current.next```.
+Once we have found our target we assign the ```current.data``` to the passed in value.
 
+* (2) After you have completed your solution, check it against this code.
+Since deques support append and reverse operations as we learned, we can use
+this to facilitate converting our list into a deque.
+```python
+from collections import deque
+
+def fill_list():
+    cat_list = []
+    for i in range(10):
+        cat_list.append("cat" + str(i))
+    return cat_list
+
+def convert_list_to_deque(my_list):
+    my_deque = deque()
+    for item in my_list:
+        my_deque.append(item)
+    return my_deque
+
+cat_list = fill_list()
+my_deque = deque()
+my_deque = convert_list_to_deque(cat_list)
+print(my_deque)
+
+my_deque.reverse()
+print(my_deque)
+```
 [Return to homepage](../README.md)
 
 #### Sources:

@@ -26,9 +26,12 @@ of the Queue.
 #### Deque
 Not all queues are created equal. There are variations to the queue that allow for different
 operations, one of which we will look at briefly is called a Deque. This type of
-queue sports a slightly different structure to a normal Queue. This type of queue allows
+queue sports a slightly different structure to a normal Queue. It allows
 enqueing and dequeueing from both the back and front of the Deque in O(1) time
-from both ends.
+from both ends. The build in python Deque is built on top of a doubly linked list
+structure which we will discuss in our next segment. However for now it is important
+to note that dequeing from a deqeue is fast than the average queue since you
+have access to both ends of the queue in O(1) time.
 
 The structure of a deque is represented in the following image:
 
@@ -153,14 +156,13 @@ before accepting the user input. A template is provided, but the solution will
 be your own.
 
 ```python
-# Start with an empty list.
 queue = []
 # Enqueue desired values.
 for i in range(1, 10):
     queue.append(i)
 
-# Ask the user how many values should be swapped.   
-num_values_to_swap = input("How many values should be removed and placed on the back of the Queue: ")
+# Ask the user how many values should be swapped.
+num_values_to_swap = int(input("How many values should be removed and placed on the back of the Queue: "))
 # YOUR CODE HERE
 ```
 
@@ -195,4 +197,22 @@ removing values from the Queue as every value has been checked for a space
 at this point in time. Once you complete problem number 2 return to the homepage to
 learn about our next topic, linked lists.
 
+* Problem 2 Solution
+```python
+queue = []
+# Enqueue desired values.
+for i in range(1, 10):
+    queue.append(i)
+
+# Ask the user how many values should be swapped.
+num_values_to_swap = int(input("How many values should be removed and placed on the back of the Queue: "))
+
+for i in range(num_values_to_swap):
+    temp = queue[0]
+    del queue[0]
+    print(temp)
+    queue.append(temp)
+
+print(queue)
+```
 [Return to homepage](../README.md)
